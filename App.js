@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import MyButton from "./src/components/MyButton";
+import NewButton from "./src/components/NewButton";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Text style={styles.text}>Many!!</Text>
       <Text style={styles.text}>Many!!!</Text>
       <MyButton />
+      <NewButton title="props title for new button" />
       <StatusBar style="auto" />
     </View>
   );
