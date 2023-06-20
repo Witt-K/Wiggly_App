@@ -7,8 +7,10 @@ export default function About() {
     <View style={styles.container}>
       <Text style={styles.emoji}>👋 </Text>
       <Text style={styles.title}>Welcome to the about page of the app!</Text>
-      <NewButton title="here is a brand new button!" />
-      <StatusBar style="auto" />
+      <Text style={styles.text}>
+        My name is Witt and this is my first app. This app is a sanbox for me to
+        play around with react native
+      </Text>
     </View>
   );
 }

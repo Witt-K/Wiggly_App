@@ -3,11 +3,15 @@ import { Button, StyleSheet, Text, View } from "react-native";
 import MyButton from "../components/MyButton";
 import NewButton from "../components/NewButton";
 
-export default function Home({ navigation }) {
+export default function Music({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.emoji}>😎</Text>
-      <Text style={styles.title}>Welcome to Wiggly K's first app!</Text>
+      <Text style={styles.emoji}>🎶</Text>
+      <Text style={styles.title}>Here is what I'm currently listening to:</Text>
+      <Text style={styles.text}>
+        {" "}
+        The Beatles, While My Guitar Gently Weeps
+      </Text>
     </View>
   );
 }
@@ -15,7 +19,7 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffd3da",
+    backgroundColor: "#FCF3CF",
     alignItems: "center",
     justifyContent: "center",
   },
