@@ -1,13 +1,12 @@
-import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View } from "react-native";
-import MyButton from "../components/MyButton";
-import NewButton from "../components/NewButton";
+import { StyleSheet, Text, View } from "react-native";
+import LoginButton from "../components/LoginButton";
 
 export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.emoji}>😎</Text>
       <Text style={styles.title}>Welcome to Wiggly K's first app!</Text>
+      <LoginButton />
     </View>
   );
 }
