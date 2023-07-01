@@ -6,9 +6,15 @@ import SubmitButton from "../components/SubmitButton";
 export default function LoginScreen() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  //useState to update value of username and password through props when text entered into text input
 
   function onSignInPressed() {
-    console.log(username, password);
+    if (username.length < 1 || password.length < 1) {
+      console.log("only one entered");
+    } else {
+      console.log(username, password);
+    }
+    // if else statement to check there is text in both username and input
   }
 
   return (

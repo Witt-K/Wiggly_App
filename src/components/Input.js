@@ -1,17 +1,18 @@
 import { View, TextInput, StyleSheet } from "react-native";
 
-export default function Input(
+export default function Input({
   value,
-  //   setValue,
+  setValue,
   placeholder,
-  secureTextEntry
-) {
+  secureTextEntry,
+}) {
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
         value={value}
-        // onChangeText={setValue}
+        onChangeText={setValue}
+        // value and setValue props from loginScreen defined as password, setPassword and username, setUsername to use useState hooks to update the values
         placeholder={placeholder}
         secureTextEntry={secureTextEntry}
       />
