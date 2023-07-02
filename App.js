@@ -49,14 +49,16 @@ const TabNavigator = () => {
 };
 
 export default function App() {
-  const reducer = (state, action) => {
-    if (action.type === "changeUsername") {
+  function reducer(state, action) {
+    if (action.type === "updateUsername") {
       return { username: action.payload };
+    } else if (action.type === "logUserOut") {
+      return { username: "" };
     } else {
       return state;
     }
-  };
-  const store = createStore(reducer, { username: "No user is set yet" });
+  }
+  const store = createStore(reducer, { username: "" });
   return (
     <Provider store={store}>
       <NavigationContainer>

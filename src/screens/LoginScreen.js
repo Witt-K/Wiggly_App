@@ -2,32 +2,48 @@ import { StyleSheet, Text, View, Alert } from "react-native";
 import { useState } from "react";
 import Input from "../components/Input";
 import SubmitButton from "../components/SubmitButton";
-import { useSelector, useDispatch } from "react-redux";
-import { Navigation } from "react-native-navigation";
-import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   //useState to update value of username and password through props when text entered into text input
 
-  const dispatch = useDispatch();
-
-  function onLogInPressed() {
+  const onLogInPressed = () => {
     if (username.length < 1 || password.length < 1) {
       Alert.alert("enter username AND password");
     } else {
-      console.log(username, password);
-      navigation.navigate("LoginSuccesful");
+      getData();
     }
+  };
 
-    // dispatch({ type: "changeUsername", payload: username });
-    // if else statement to check there is text in both username and input
-  }
-  // const existingUsername = useSelector((s) => s.username);
-  // if (existingUsername === username) {
-  //   console.log("username exists");
-  // }
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("my-key");
+      if (value !== null) {
+        dispatch({ type: "updateUsername", payload: username });
+        navigation.navigate("LoginSuccesful");
+        // value previously stored
+      } else {
+        Alert.alert("please enter details to sign up ");
+        storeData(username, password);
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
+  // checks if a username and password are stored - if yes, navigate to succesful log in page and update username in redux
+
+  const storeData = async (username, password) => {
+    try {
+      await AsyncStorage.setItem("my-key", username, password);
+    } catch (e) {
+      // saving error
+    }
+  };
+  // stores username and password
 
   return (
     <View style={styles.container}>
